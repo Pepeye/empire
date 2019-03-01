@@ -10,9 +10,9 @@ struct Ping {
     time: String,
 }
 
-fn pong(req: &HttpRequest) -> impl Responder {
+fn pong(_req: &HttpRequest) -> impl Responder {
     let p: Ping = Ping {
-        id: req.,
+        id: Uuid::new_v4().to_string(),
         message: "empire.service".to_owned(),
         time: Utc::now().to_string()
     };
