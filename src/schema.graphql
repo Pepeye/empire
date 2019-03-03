@@ -1,0 +1,17 @@
+type Mutation {
+  ping(p: Ping!): Pong!
+}
+
+input Ping {
+  message: String!
+}
+
+type Pong {
+  id: String!
+  message: String!
+  time: String!
+}
+
+type Query {
+  pong: Pong!
+}
