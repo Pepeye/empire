@@ -1,6 +1,3 @@
-#[macro_use]
-extern crate juniper;
-
 use actix::prelude::*;
 use actix_web::{
     server, App, AsyncResponder, 
