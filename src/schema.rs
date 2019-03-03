@@ -17,8 +17,11 @@ struct Pong {
 struct Ping {
     message: String,
 }
+
+/// Query root type
 pub struct Query;
 
+// query root fields definitions
 graphql_object!(Query: () |&self| {
 
   // Arguments to resolvers can either be simple types or input objects
@@ -32,8 +35,10 @@ graphql_object!(Query: () |&self| {
   }
 });
 
+/// Mutation root type
 pub struct Mutation;
 
+// mutation root fields definition
 graphql_object!(Mutation: () |&self| {
   field ping(&executor, p: Ping) -> FieldResult<Pong> {
     Ok(Pong{
@@ -44,8 +49,10 @@ graphql_object!(Mutation: () |&self| {
   }
 });
 
+/// schema type alias
 pub type Schema = RootNode<'static, Query, Mutation>;
 
+/// Schema root - queries and mutations
 pub fn create_schema() -> Schema {
   Schema::new(Query {}, Mutation {})
 }
