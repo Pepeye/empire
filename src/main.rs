@@ -6,7 +6,8 @@ use actix_web::{
 };
 use actix_web::middleware::Logger;
 use env_logger;
-use uuid::Uuid;
+// use uuid::Uuid;
+use cuid;
 use chrono::prelude::*;
 use serde_derive::{Serialize, Deserialize};
 
@@ -83,7 +84,7 @@ fn graphql((st, data): (State<AppState>, Json<GraphQLData>),) -> FutureResponse<
 
 fn ping(_req: &HttpRequest<AppState>) -> impl Responder {
     let p: Pong = Pong {
-        id: Uuid::new_v4().to_string(),
+        id: cuid::cuid().to_string(),
         message: "empire.service".to_owned(),
         time: Utc::now().to_string()
     };
